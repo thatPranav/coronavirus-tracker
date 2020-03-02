@@ -10,15 +10,16 @@ class App extends Component {
     this.state = {
       data:[],
       columns: ["Province/State", "Country/Region", "Total cases reported", "Changes since last day"],
-      sumOfAllCountries: ''
+      totalCasesReported: 0,
+      newCasesSinceLastDay: 0
     }
   }
   render() {
     return (
       <div className="App">
-        <h1>
-          {this.state.sumOfAllCountries}
-        </h1>
+        <h1>{this.state.totalCasesReported}</h1>
+        <h2>Total cases reported as of today</h2>
+        <h5>New cases reported since previous day: {this.state.newCasesSinceLastDay}</h5>
         <MUIDataTable 
         columns = {this.state.columns}
         data = {this.state.data.slice(1)}
@@ -34,7 +35,9 @@ class App extends Component {
       const response = await axios.get(virusDataURL)
       const rows = response.data.split('\n') //.slice(1)
       var data = []
-      var sumOfAllCountries = 0;
+      var totalCasesReported = [];
+      var newCasesSinceLastDay = [];
+
       rows.forEach(element => {
         const row = element.split(',')
 
@@ -47,14 +50,22 @@ class App extends Component {
         }
         
         const changesSinceLastDay = row[row.length - 1]
-        console.log(typeof(sum), typeof(sumOfAllCountries))
+
+        totalCasesReported.push(sum)
+        newCasesSinceLastDay.push(Number(changesSinceLastDay))
+
         data.push([
           state, country, sum, changesSinceLastDay
         ])
 
       });
-      console.log(sumOfAllCountries)
-      this.setState({data, sumOfAllCountries})
+
+      this.setState({
+        data,
+        totalCasesReported: totalCasesReported.slice(1).reduce((a, b) => a + b, 0),
+        newCasesSinceLastDay: newCasesSinceLastDay.slice(1).reduce((a, b) => a + b, 0)
+      })
+      console.log(this.state.newCasesSinceLastDay)
     } catch(e){
       console.log(e)
     }
