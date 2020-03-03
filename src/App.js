@@ -39,8 +39,8 @@ class App extends Component {
           }
         },
         {
-          name: "Changes since last day",
-          label: "Changes since last day",
+          name: "New cases today",
+          label: "New cases today",
           options: {
             filter: false,
             sort: false
