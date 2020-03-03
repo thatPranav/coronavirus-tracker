@@ -19,6 +19,35 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Table {
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+}
+
+.Card {
+  padding-right: 30px;
+  padding-left: 80px;
+}
+
+.Card-action {
+  background-color: #d3d3d3;
+}
+
+.Typo {
+  text-align: left;
+}
+
+.App-title {
+  text-align: left;
+  padding-right: 30px;
+  padding-left: 80px;
 }
