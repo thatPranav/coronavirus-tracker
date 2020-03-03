@@ -62,7 +62,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-title">
-          <h2>Coronavirus Tracker Application</h2>
+          <h2>Coronavirus Tracker Application!</h2>
           <p>
             This application lists the current number of cases reported across
             the globe
