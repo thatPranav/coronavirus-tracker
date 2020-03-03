@@ -27,7 +27,7 @@ class App extends Component {
           label: "Country/Region",
           options: {
             filter: true,
-            sort: true
+            sort: false
           }
         },
         {
@@ -35,7 +35,7 @@ class App extends Component {
           label: "Total cases reported",
           options: {
             filter: false,
-            sort: false
+            sort: true
           }
         },
         {
@@ -43,7 +43,7 @@ class App extends Component {
           label: "New cases today",
           options: {
             filter: false,
-            sort: false
+            sort: true
           }
         }
       ],
@@ -63,6 +63,10 @@ class App extends Component {
       <div className="App">
         <div className="App-title">
           <h2>Coronavirus Tracker Application</h2>
+          <p>
+            This application lists the current number of cases reported across
+            the globe
+          </p>
         </div>
         <Card className="Card">
           <CardActionArea>
