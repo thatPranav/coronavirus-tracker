@@ -31,16 +31,16 @@ class App extends Component {
           }
         },
         {
-          name: "Changes since last day",
-          label: "Changes since last day",
+          name: "Total cases reported",
+          label: "Total cases reported",
           options: {
             filter: false,
             sort: true
           }
         },
         {
-          name: "New cases today",
-          label: "New cases today",
+          name: "Changes since last day",
+          label: "Changes since last day",
           options: {
             filter: false,
             sort: true
