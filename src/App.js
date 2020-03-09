@@ -119,7 +119,7 @@ class App extends Component {
       "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
     try {
       const response = await axios.get(virusDataURL);
-      console.log(response.data.split("\n"));
+      // console.log(response.data.split("\n"));
       const rows = response.data.split("\n"); //.slice(1)
       var data = [];
       var totalCasesReported = [];
@@ -133,7 +133,7 @@ class App extends Component {
         const today = row[row.length - 1];
         const yesterday = row[row.length - 2];
 
-        totalCasesReported.push(Number(today)); //sum
+        totalCasesReported.push(Number(today));
         newCasesToday.push(today - yesterday);
 
         data.push([state, country, today, today - yesterday]);
