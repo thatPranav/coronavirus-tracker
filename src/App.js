@@ -62,7 +62,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-title">
-          <h2>Coronavirus Tracker Application!</h2>
+          {/* <h2>Coronavirus Tracker Application!</h2> */}
           <p>
             This application lists the current number of cases reported across
             the globe
@@ -119,6 +119,7 @@ class App extends Component {
       "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
     try {
       const response = await axios.get(virusDataURL);
+      console.log(response.data.split("\n"));
       const rows = response.data.split("\n"); //.slice(1)
       var data = [];
       var totalCasesReported = [];
@@ -129,18 +130,13 @@ class App extends Component {
 
         const state = row[0];
         const country = row[1];
+        const today = row[row.length - 1];
+        const yesterday = row[row.length - 2];
 
-        var sum = 0;
-        for (var i = 5; i < row.length; i++) {
-          sum += Number(row[i]);
-        }
+        totalCasesReported.push(Number(today)); //sum
+        newCasesToday.push(today - yesterday);
 
-        const changesSinceLastDay = row[row.length - 1];
-
-        totalCasesReported.push(sum);
-        newCasesToday.push(Number(changesSinceLastDay));
-
-        data.push([state, country, sum, changesSinceLastDay]);
+        data.push([state, country, today, today - yesterday]);
       });
 
       this.setState({
@@ -150,7 +146,6 @@ class App extends Component {
           .reduce((a, b) => a + b, 0),
         newCasesToday: newCasesToday.slice(1).reduce((a, b) => a + b, 0)
       });
-      console.log(this.state.newCasesToday);
     } catch (e) {
       console.log(e);
     }
