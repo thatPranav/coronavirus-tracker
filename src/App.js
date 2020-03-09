@@ -15,24 +15,24 @@ class App extends Component {
       data: [],
       columns: [
         {
-          name: "Province/State",
-          label: "Province/State",
+          name: "State",
+          label: "State",
           options: {
             filter: true,
             sort: true
           }
         },
         {
-          name: "Country/Region",
-          label: "Country/Region",
+          name: "Region",
+          label: "Region",
           options: {
             filter: true,
             sort: false
           }
         },
         {
-          name: "Total cases reported",
-          label: "Total cases reported",
+          name: "Changes since last day",
+          label: "Changes since last day",
           options: {
             filter: false,
             sort: true
@@ -99,7 +99,8 @@ class App extends Component {
                 color="textSecondary"
                 component="p"
               >
-                New cases reported today: {this.state.newCasesToday}
+                New cases reported since previous day:{" "}
+                {this.state.newCasesToday}
               </Typography>
             </CardContent>
           </CardActionArea>
