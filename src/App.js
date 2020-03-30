@@ -117,7 +117,7 @@ class App extends Component {
 
   async componentDidMount() {
     const virusDataURL =
-      "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv";
+      "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
     try {
       const response = await axios.get(virusDataURL);
       // console.log(response.data.split("\n"));
